@@ -1,0 +1,12 @@
+# --- Zoxide Alias (better cd) ---
+# Alias 'cd' to the 'z' function provided by zoxide
+alias zi='zoxide query -i'
+
+# --- Eza Aliases (better ls, with icons) ---
+# Ensure 'eza' is installed for these aliases to work.
+alias ls='eza -x --icons'
+alias l='eza -lF --icons'
+alias la='eza -xagF --icons'
+alias ll='eza -lghF --icons'
+alias lla='eza -laghF --icons'
+

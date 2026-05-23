@@ -1,0 +1,17 @@
+[user]
+    name = Bhavik Knight
+    email = 15388512+bhavik-knight@users.noreply.github.com
+
+[core]
+    editor = vim
+
+[includeIf "gitdir:/home/bhavik/Dropbox/edu/smu/**"]
+    name = Bhavik Bhagat
+    email = 230625506+bhavik-bhagat-smu@users.noreply.github.com
+
+[init]
+    defaultBranch = main
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+

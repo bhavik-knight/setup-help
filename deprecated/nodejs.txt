@@ -1,0 +1,54 @@
+install nodejs in wsl-ubuntu
+
+A. NVM - multiple nodejs
+
+if you want to manage multiple versions of node js - try NVM (node version manager way)
+(ref: https://www.makeuseof.com/install-nodejs-multiple-versions-linux/)
+(ref: https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/)
+
+1. install nvm for that
+--------------------------------------------------------------------------------
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+--------------------------------------------------------------------------------
+
+2. restart terminal
+--------------------------------------------------------------------------------
+exec zsh -l
+--------------------------------------------------------------------------------
+
+3. check nvm version and see if it is installed correctly.
+--------------------------------------------------------------------------------
+nvm --version
+--------------------------------------------------------------------------------
+
+4. install node js (latest by default if you type node, or type specific version if you want that)
+--------------------------------------------------------------------------------
+nvm install node
+--------------------------------------------------------------------------------
+
+
+B. specific nodejs version from the official docs
+(https://github.com/nodesource/distributions#debinstall)
+
+1. update and upgrade wsl-ubuntu
+--------------------------------------------------------------------------------
+sudo apt update -y
+sudo apt upgrade -y
+--------------------------------------------------------------------------------
+
+
+2. download and install node for bash (16.x indicates node version 16 LTS)
+--------------------------------------------------------------------------------
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+--------------------------------------------------------------------------------
+
+
+C. post installation checks
+check these 3 and should give you a path if installed correctly
+--------------------------------------------------------------------------------
+which node
+which npm
+which npx
+--------------------------------------------------------------------------------
+

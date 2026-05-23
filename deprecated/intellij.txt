@@ -1,0 +1,23 @@
+My OS: ZorinOS Linux
+
+0. install from snap store or jetbrains tools
+--------------------------------------------------------------------------------
+jetbrains tools reference: https://www.jetbrains.com/help/idea/installation-guide.html
+--------------------------------------------------------------------------------
+
+1. install community edition
+
+2. Find the location
+depending on the OS find the location - for me it is here
+--------------------------------------------------------------------------------
+/home/bhavik/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-edition/bin
+--------------------------------------------------------------------------------
+
+
+3. to run a project from CLI as a background process
+in bash_aliases add these lines
+--------------------------------------------------------------------------------
+function idea() {
+    /home/bhavik/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-edition/bin/idea.sh "$1" > /dev/null 2>&1 &
+}
+--------------------------------------------------------------------------------

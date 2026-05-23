@@ -1,0 +1,69 @@
+################################################################################
+link for reference
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
+################################################################################
+------------------------------------------------
+>>> indicate prompts of terminal (bash/powershell/cmd)
+------------------------------------------------
+################################################################################
+1. open powershell/cmd "as admid", at prompt
+------------------------------------------------
+>>> Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+------------------------------------------------
+################################################################################
+2. Restart your computer when prompted.
+################################################################################
+3. I am downloading from MS-store as it's easier for me.
+Ubuntu 20.04 LTS
+################################################################################
+4.
+After installation is  finished, open it. It will take a while.
+You will be asked to set a new account, username - password.
+Do it and then at prompt do following to update/upgrade packages.
+------------------------------------------------
+>>> sudo apt-get -y update && sudo apt -y upgrade
+------------------------------------------------
+Now you're set. All the best.
+4-sub.
+You will need password when you do elevated (sudo su/ super user / root) user in Linux.
+################################################################################
+5.
+install setuptools and pip to install more python packages
+@root prompt (aka sudo su from normal prompt) type following
+------------------------------------------------
+>>> apt-get install -y python3-setuptools
+------------------------------------------------
+>>> python3 -m easy_install pip
+------------------------------------------------
+>>> apt-get install -y python3-pip	(-- not confirmed but guessing it works)
+################################################################################
+6.
+install ssh private and public keys to push on github & gitlab
+------------------------------------------------
+>>> ssh-keygen -t ed25519 -C "email@example.com"
+------------------------------------------------
+where "email@example.com" is your email_id assosiated with github/gitlab
+it will add both keys to this directory => /home/<user_name>/.ssh
+add "id_ed25519.pub" (public key) to github, gitlab
+################################################################################
+7.
+configure git settings, for email_id use the public email of github for your profile
+------------------------------------------------
+>>> git config user.name "Bhavik"
+------------------------------------------------
+>>> git config user.email "email@example.com"
+------------------------------------------------
+>>> git config --list (command to check it)
+################################################################################
+8.
+mount a folder into "home" directory of wsl
+------------------------------------------------
+>>> sudo ln -s <path_to_folder> ~/home
+------------------------------------------------
+################################################################################
+n.
+Additional resources.
+https://docs.microsoft.com/en-us/windows/wsl/about
+https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/
+################################################################################
+

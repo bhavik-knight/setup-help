@@ -1,0 +1,54 @@
+###############################################################################
+1.
+make python3 the default python in wsl
+-------------------------------------------------------------------------------
+>>> vim .bash_profile
+-------------------------------------------------------------------------------
+
+in vim, type following
+-------------------------------------------------------------------------------
+alias python=python3
+-------------------------------------------------------------------------------
+###############################################################################
+2.
+at wsl prompt type "charm" command to launch pycharm of windows
+
+there are two things we have to deal with 
+a. windows - add pycharm to environment virables
+b. wsl - make "charm" command to point to the pycharm that is installed
+
+
+a.
+pycharm installation path is needed for this - get it by
+right click on pycharm icon -> target -> copy this, for me that is 
+-------------------------------------------------------------------------------
+C:\Program Files\JetBrains\PyCharm Community Edition 2020.1\bin\pycharm64.exe
+-------------------------------------------------------------------------------
+
+
+control panel/system/advance system settings/advanced/environment variables
+in user variable for <user> there should be "path" - select, edit
+click new, and paste whole thing here upto bin, means delete "\pycharm64.exe"
+-------------------------------------------------------------------------------
+C:\Program Files\JetBrains\PyCharm Community Edition 2020.1\bin
+-------------------------------------------------------------------------------
+that should be added to your path exactly
+
+b.
+in wsl, as #1 make python3 default python, we do "charm" to launch pycharm
+-------------------------------------------------------------------------------
+>>> vim .bash_profile
+-------------------------------------------------------------------------------
+
+in vim, type the copied path of pycharm with WSL specific escaping methods
+-------------------------------------------------------------------------------
+alias charm="/mnt/c/Program\ Files/JetBrains/PyCharm\ Community\ Edition\ 2020.1/bin/pycharm64.exe"
+-------------------------------------------------------------------------------
+###############################################################################
+3.
+now make those changes work by following
+-------------------------------------------------------------------------------
+>>> source .bash_profile
+-------------------------------------------------------------------------------
+###############################################################################
+

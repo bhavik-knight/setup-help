@@ -1,0 +1,56 @@
+#!/bin/bash
+set -e
+
+# Zorin OS Maintenance Script
+# Performs system updates and cleanup
+echo "==================================="
+echo "  Starting Zorin OS Maintenance"
+echo "==================================="
+echo ""
+
+# 1. APT UPDATE
+echo "[1/6] Updating APT package lists..."
+sudo apt update
+echo ""
+
+# 2. APT UPGRADE
+echo "[2/6] Upgrading APT packages..."
+sudo apt upgrade -y
+echo ""
+
+# 3. SNAP UPDATE
+echo "[3/6] Updating Snap packages..."
+if command -v snap &> /dev/null; then
+    sudo snap refresh
+else
+    echo "Snap not installed, skipping."
+fi
+echo ""
+
+# 4. FLATPAK UPDATE
+echo "[4/6] Updating Flatpak packages..."
+if command -v flatpak &> /dev/null; then
+    flatpak update -y
+else
+    echo "Flatpak not installed, skipping."
+fi
+echo ""
+
+# 5. APT AUTOREMOVE
+echo "[5/6] Removing unused dependencies..."
+sudo apt autoremove -y
+echo ""
+
+# 6. APT AUTOCLEAN
+echo "[6/6] Cleaning package cache..."
+sudo apt autoclean
+echo ""
+
+# Optional: Add more cleanup commands here if desired
+# echo "[Extra] Clearing thumbnail cache..."
+# rm -rf ~/.cache/thumbnails/*
+
+echo "==================================="
+echo "  Maintenance Complete!"
+echo "==================================="
+

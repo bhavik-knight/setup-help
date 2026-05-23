@@ -1,0 +1,45 @@
+after reset
+
+Menu> view> 
+Night mode - on
+File browser - off
+Layout - Horizontal Split
+
+Menu>File>Preferences>
+
+Themes>
+Syntax Theme: Vibrant Ink
+
+User Settings>
+
+IDE Behavior>
+Audible Terminal Bell - off
+Gravatar - on
+
+General>
+General> Warn Before exiting - on
+UI> Use an Astrisk to mark Changed Tabs - on
+
+Terminal>
+BG color - Black
+Font Size - 16
+
+Output>
+BG color - black
+
+Code Editor (Ace)>
+Warp Selecion with Brackets, Quotes, etc - On
+Code Folding - on
+Show invisible chars - on
+Show line numbers - relative
+Font size - 16
+
+Language>Input>
+Complete as you type - On
+
+Run>
+Preview> Preview Running Apps - on
+Build> Automatically build Supported files - on
+
+Key Bindings>
+Keyboard Mode - Vim

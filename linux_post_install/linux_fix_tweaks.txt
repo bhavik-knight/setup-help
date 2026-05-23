@@ -1,0 +1,21 @@
+# gnome tweaks for clock override
+----------------------------------------------------------------------------------------
+>>> sudo apt install gnome-tweaks
+----------------------------------------------------------------------------------------
+
+
+# fix screen share issue linux turn off wayland on Gnome Desktop env
+# edit the following file via nano/vim, make sure that WaylandEnable is false
+----------------------------------------------------------------------------------------
+>>> sudo vim /etc/gdm3/custom.conf
+WaylandEnable=false
+----------------------------------------------------------------------------------------
+
+
+# fix postman install via flatpak if crashing on opening the app
+# manually install certificate
+# reference: https://github.com/postmanlabs/postman-app-support/issues/12330
+----------------------------------------------------------------------------------------
+>>> cd ~/.var/app/com.getpostman.Postman/config/Postman/proxy
+>>> openssl req -subj '/C=US/CN=Postman Proxy' -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -keyout postman-proxy-ca.key -out postman-proxy-ca.crt
+----------------------------------------------------------------------------------------

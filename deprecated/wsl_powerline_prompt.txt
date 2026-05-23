@@ -1,0 +1,63 @@
+###############################################################################
+0.
+to understand this steps. ">>> " is prompt
+fonts to display all symbols correctly, you will need
+"DejaVu Sans Mono for Powerline.ttf" fonts
+
+to add the fonts, you need to run a shell script
+go to your desktop, shift + right click, open linux shell
+-------------------------------------------------------------------------------
+>>> git clone https://github.com/powerline/fonts.git
+-------------------------------------------------------------------------------
+now open fonts folder, right click -> install.ps1 file -> run with powershell
+now, on ubuntu, right click -> properties/font/ - select DejaVu - size 20, bold
+###############################################################################
+1.
+install & setup powerline-shell
+-------------------------------------------------------------------------------
+>>> git clone https://github.com/b-ryan/powerline-shell
+>>> cd powerline-shell
+>>> sudo -s                         (go root to execute nextline correctly)
+>>> python setup.py install
+>>> exit                            (exit from root mode)
+-------------------------------------------------------------------------------
+after this you can remove this git repo
+>>> rm -rf powerline-shell
+-------------------------------------------------------------------------------
+###############################################################################
+2.
+add following lines at the end of your .bash_aliases file, you can use vim to edit
+-------------------------------------------------------------------------------
+>>> vim .bash_aliases
+-------------------------------------------------------------------------------
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+-------------------------------------------------------------------------------
+now, to see those changes source this .bash_aliases
+-------------------------------------------------------------------------------
+>>> source .bash_aliases
+-------------------------------------------------------------------------------
+###############################################################################
+3.
+additional steps, customize powerline
+for example, if you want to make your prompt on a new line
+-------------------------------------------------------------------------------
+>>> mkdir -p ~/.config/powerline-shell
+>>> cd ~/.config/powerline-shell
+>>> powerline-shell --generate-config > ~/.config/powerline-shell/config.json
+-------------------------------------------------------------------------------
+now you can edit this config.json file using vim
+-------------------------------------------------------------------------------
+>>> vim config.json
+-------------------------------------------------------------------------------
+my configuration file is in this directory named as "powerline_my_config.json"
+###############################################################################
+n.
+more steps for future.
+###############################################################################
+

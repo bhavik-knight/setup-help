@@ -1,0 +1,101 @@
+httpd
+httpd-manual
+kdewebdev
+mysql
+mysql-server
+php
+php-mysql
+
+
+
+
+
+
+
+
+
+
+
+
+# completely remove apache, mysql, phpmyadmin
+sudo service apache2 stop
+sudo apt-get remove --purge "^apache2.*" -y
+sudo apt-get autoremove -y && sudo apt-get autoclean -y
+sudo rm -rf $(whereis apache2)
+
+sudo service mysql stop
+sudo apt-get remove --purge "^mysql.*" -y
+sudo apt-get autoremove -y && sudo apt-get autoclean -y
+sudo rm -rf $(whereis mysql)
+sudo rm -rf /var/lib/mysql
+
+sudo apt-get remove --purge "phpmyadmin.*" -y
+sudo apt-get autoremove -y && sudo apt-get autoclean -y
+sudo rm -rf $(whereis phpmyadmin)
+
+
+# installation process
+# update packages
+sudo apt-get update -y && sudo apt-get upgrade -y
+
+# fix broken dependencies
+sudo apt-get install -f
+
+apache:
+sudo apt-get install -y apache2
+sudo service apache2 start
+
+php:
+sudo apt-get install -y php libapache2-mod-php 
+sudo apt-get install -y php-curl php-gd php-json php-mbstring php-xml php-zip php-cli
+
+
+mysql:
+sudo apt-get install -y mysql-server
+sudo service mysql restart
+sudo mysql
+
+@mysql promt set root pwd: Mysql@123
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'Mysql@123';
+mysql> FLUSH PRIVILEGES;
+mysql> exit;
+
+sudo mysql_secure_installation
+
+
+
+>>> answers as follows:
+    #> Validate password component: N
+    #> change pwd for root: N
+    #> Remove anonymous users: Y
+    #> Disallow root login remotely: Y
+    #> Reload privilege tables now: Y
+
+sudo service mysql stop
+sudo usermod -d /var/lib/mysql mysql
+sudo service mysql restart
+
+# install phpmyadmin:
+sudo apt-get install -y phpmyadmin
+>>> apache2, dbconfig - yes, random pwd: Admin@123
+
+# restart mysql, apache2
+sudo service mysql restart && sudo service apache2 restart
+
+-----------------------------------------------------------------
+https://gist.github.com/abobija/228e36441d31ae17ecc36edc9a47ceb5
+edit .bash_aliases
+-----------------------------------------------------------------
+alias lampstatus="sudo service apache2 status ; sudo service mysql status"
+alias lampstart="sudo service mysql start ; sudo service apache2 start"
+alias lampstop="sudo service mysql stop ; sudo service apache2 stop"
+alias lamprestart="lampstop ; lampstart"
+-----------------------------------------------------------------
+
+# point your project dir to /var/www/html
+sudo sed -i "s;/var/www;$HOME/www;g" /etc/apache2/apache2.conf
+sudo sed -i "s;/var/www/html;$HOME/www;g" /etc/apache2/sites-available/000-default.conf
+
+
+# solved: phpmyadmin errors after creating tables 
+https://tecadmin.net/warning-in-libraries-sql-lib-php-613-count-parameter-must-be-an-array-or-an-object-that-implements-countable/

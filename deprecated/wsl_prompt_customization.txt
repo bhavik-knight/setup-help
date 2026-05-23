@@ -1,0 +1,38 @@
+################################################################################
+To make prompt look like in bash. 
+------------------------------------------------
+bhavik_wsl@win10 [~] >>
+$
+------------------------------------------------
+bhavik_wsl -> username in wsl, win10 -> host OS, $ -> prompt
+################################################################################
+
+
+################################################################################
+# customzie prompt & color change of prompt
+pink=$(tput setaf 219);         # for username: pink
+green=$(tput setaf 10);         # for actual prompt sign: green
+cyan=$(tput setaf 14);          # for host: cyan
+yellow=$(tput setaf 11);        # for path of current dir: yellow
+white=$(tput setaf 15);         # for white color
+reset=$(tput sgr0);             # reset color
+bold=$(tput bold);              # bold
+
+# \[ \] -- to make behave cursour the way it should
+# PS1 -- variable that is used to customize prompt
+
+PS1=""
+PS1+="\[${bold}\]\n";		# new line -- \n
+PS1+="\[${pink}\]\u";		# username -- \u
+PS1+="\[${white}\]@";		# @
+PS1+="\[${cyan}\]\h";		# host -- \h
+PS1+="\[${white}\] [";		# for path to include in bracket
+PS1+="\[${yellow}\]\w";		# path to current directory -- \w, for dir only without path -- \W
+PS1+="\[${white}\]] >>";	# for path to include in bracket
+PS1+="\[${white}\]\n";		# new line -- \n
+PS1+="\[${green}\]\$ ;		# actual prompt -- \$ (\ only needs when you want to use $ for prompt
+PS1+="\[${reset}\]";		# reset color
+
+export PS1;                     # to write env variable or something
+
+################################################################################

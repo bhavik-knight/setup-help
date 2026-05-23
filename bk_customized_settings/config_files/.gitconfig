@@ -1,0 +1,14 @@
+[user]
+    name = Bhavik Knight
+    email = 15388512+bhavik-knight@users.noreply.github.com
+[core]
+    editor = vim
+
+[includeIf "gitdir:/home/bhavik/Dropbox/edu/smu"]
+    path = ~/.gitconfig-uni
+
+[includeIf "gitdir:/home/bhavik/Dropbox/edu/smu/**"]
+    path = ~/.gitconfig-uni
+
+[init]
+	defaultBranch = main

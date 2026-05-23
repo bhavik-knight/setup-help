@@ -1,0 +1,14 @@
+1. move taskbar to top: regedit -
+Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3
+settings: 
+Row:00000008, Col: FE, delete: 03 to 01, okay.
+cmd-as-admin:
+taskkill /f /im explorer.exe
+start explorer.exe
+
+
+2. make taskbar icons small: regedit -
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+Advanced: Right-click new -> DWORD (32-bit value)
+Rename: TaskbarSi
+Value: 0 - small, 1 - medium, 2 - large

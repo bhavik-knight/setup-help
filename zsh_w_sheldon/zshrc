@@ -1,0 +1,16 @@
+# ==============================================================================
+# 1. INITIALIZE SHELDON FIRST (Moves plugins into memory)
+# ==============================================================================
+eval "$(sheldon source)"
+
+# ==============================================================================
+# 2. LOAD CUSTOM BLUEPRINT MODULES (Can safely use defer now)
+# ==============================================================================
+ZSH_MODULES="$HOME/.config/zsh"
+
+if [[ -d "$ZSH_MODULES" ]]; then
+    for config_file in "$ZSH_MODULES"/*.zsh; do
+        source "$config_file"
+    done
+fi
+

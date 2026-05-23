@@ -1,0 +1,74 @@
+1.
+install zsh
+--------------------------------------------------------------------------------
+sudo apt install zsh -y
+--------------------------------------------------------------------------------
+
+2.
+change default shell
+--------------------------------------------------------------------------------
+chsh -s $(which zsh)
+--------------------------------------------------------------------------------
+restart the terminal / OS
+
+
+3.
+oh-my-zsh
+--------------------------------------------------------------------------------
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+--------------------------------------------------------------------------------
+
+4.
+- install powerlevel10k
+--------------------------------------------------------------------------------
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+--------------------------------------------------------------------------------
+
+5.
+set powerlevel10k as ZSH_THEME in .zshrc
+--------------------------------------------------------------------------------
+ZSH_THEME="powerlevel10k/powerlevel10k"
+--------------------------------------------------------------------------------
+- restart the terminal
+--------------------------------------------------------------------------------
+exec zsh -l
+--------------------------------------------------------------------------------
+
+
+6.
+configure / reconfigure
+--------------------------------------------------------------------------------
+p10k configure
+--------------------------------------------------------------------------------
+
+
+7.
+auto suggestions
+--------------------------------------------------------------------------------
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+--------------------------------------------------------------------------------
+
+
+8. auto syntax highlighting
+--------------------------------------------------------------------------------
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+--------------------------------------------------------------------------------
+
+9. auto fast syntax highlighting
+--------------------------------------------------------------------------------
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+--------------------------------------------------------------------------------
+
+10. auto complete
+--------------------------------------------------------------------------------
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
+--------------------------------------------------------------------------------
+
+
+11.
+enable both syntax highlight and autosuggestion plugins in zshrc
+--------------------------------------------------------------------------------
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
+--------------------------------------------------------------------------------
+
+#.

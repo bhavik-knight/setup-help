@@ -1,0 +1,73 @@
+################################################################################
+to "make" work like cs50's make in linux-ubuntu
+################################################################################
+
+################################################################################
+# to make sure cs50 library works install cs50 library 
+# lib50 for c: 		https://github.com/cs50/libcs50
+# cs50 for python:	https://github.com/cs50/python-cs50
+# install tools like -- check50, style50, submit50
+# link: 		https://cs50.readthedocs.io/
+################################################################################
+
+################################################################################
+# install clang, gdb, valgrind
+>>> sudo apt-get install -y clang
+>>> sudo apt-get install -y gdb
+>>> sudo apt-get install -y valgrind
+
+# check version of all 
+>>> clang --version
+>>> gdb --version
+>>> valgrind --version
+################################################################################
+
+################################################################################
+# stuff needed to install cs50 library
+>>> sudo apt-get install make	(if make command is not installed already)
+>>> pip install wheel		(this is to install some tools)
+
+# to clone cs50 library for C programs
+>>> git clone https://github.com/cs50/libcs50.git
+
+# then move to that repo and install it
+>>> cd libcs50
+>>> sudo make install
+
+# then remove this repo
+>>> cd ..
+>>> sudo rm -rf libcs50
+
+# to install cs50 library for python programs
+>>> pip install cs50
+################################################################################
+
+################################################################################
+# next steps are to make sure that you can use cs50 library, for that
+# put following into ".bash_profile" at the end, save & exit
+
+export CC="clang"
+export CFLAGS="-fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow"
+export LDLIBS="-lcrypt -lcs50 -lm"
+################################################################################
+
+################################################################################
+# source .bash_profile using following
+>>> source .bash_profile
+
+# make a simple hello.c program to check if it works
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string name = get_string("What is your name? ");
+    printf("Hello, %s\n", name);
+    return 0;
+}
+
+>>> make hello
+>>> ./hello
+################################################################################
+

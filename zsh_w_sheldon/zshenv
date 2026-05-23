@@ -1,0 +1,5 @@
+# Ensure Cargo binaries are discoverable by the shell
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
+# Set your default text editor for things like git and sheldon edit
+export EDITOR="nvim" # Or 'nvim' / 'vim'

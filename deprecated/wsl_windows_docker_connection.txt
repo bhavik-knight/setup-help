@@ -1,0 +1,72 @@
+################################################################################
+# source:
+https://docs.docker.com/install/linux/docker-ce/ubuntu/
+################################################################################
+
+################################################################################
+# part0 - remove older version of docker if already installed
+>>> sudo apt-get remove docker docker-engine docker.io containerd runc
+
+# install docker-ce using repositories
+################################################################################
+
+################################################################################
+# part1 - setup repo
+
+1. Update the apt package index:
+>>> sudo apt-get -y update
+
+2. Install packages to allow apt to use a repository over HTTPS:
+>>> sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common -y
+
+3. Add Docker’s official GPG key, verify that key
+>>> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+>>> sudo apt-key fingerprint 0EBFCD88
+
+4. setup the stable repository (for x86_64 / amd64)
+>>> sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable" -y
+################################################################################
+
+################################################################################
+# part2 - install docker-ce, docker compose
+
+1. update apt package index
+>>> sudo apt-get -y update
+
+2. install latest version of docker-ce
+>>> sudo apt-get install -y docker-ce
+
+3. install docker-compose using pip
+>>> sudo -H pip3 install docker-compose
+################################################################################
+
+################################################################################
+# part3 - create the docker group and add user
+>>> sudo groupadd docker
+>>> sudo usermod -aG docker $USER
+# log out and login again into linux
+################################################################################
+
+################################################################################
+# part4 docker daemon: point wsl docker to docker desktop for windows
+# put following at the end of .profile save exit
+export DOCKER_HOST=tcp://localhost:2375
+
+on terminal source it
+>>> source .profile
+################################################################################
+
+################################################################################
+# pset5 - check if it's installed by running hello-world
+docker run hello-world
+docker image ls 		# list images
+docker ps -a			# list containers
+################################################################################
